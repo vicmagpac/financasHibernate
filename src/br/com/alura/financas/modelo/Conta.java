@@ -1,7 +1,10 @@
 package br.com.alura.financas.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -15,6 +18,12 @@ public class Conta {
 	private String agencia;
 	private String numero;
 	
+	@OneToMany(mappedBy="conta")
+	private List<Movimentacao> movimentacoes;
+	
+	public List<Movimentacao> getMovimentacoes() {
+		return this.movimentacoes;
+	}
 	
 	public Integer getId() {
 		return id;
